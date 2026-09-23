@@ -6,7 +6,7 @@
   "description": "ICETET 2027 conference website — React + Vite migration (same folder)",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && cp dist/index.html dist/404.html && for f in about call-for-papers committee contact important-dates registration; do cp dist/index.html dist/$f.html; done",
+    "build": "vite build && node scripts/postbuild.mjs",
     "preview": "vite preview"
   },
   "dependencies": {
