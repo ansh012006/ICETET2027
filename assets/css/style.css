@@ -2819,8 +2819,9 @@ table {
 }
 .inst-strip__inner {
 	display: flex;
-	align-items: center;
-	gap: 1rem;
+	align-items: stretch;
+	justify-content: space-between;
+	gap: 0;
 	overflow-x: auto;
 	padding: 0.55rem 1rem;
 	scrollbar-width: thin;
@@ -2828,13 +2829,22 @@ table {
 .inst-strip__item {
 	display: inline-flex;
 	align-items: center;
+	justify-content: center;
 	gap: 1rem;
-	flex: 0 0 auto;
+	flex: 1 1 0;
+	min-width: 0;
+	padding: 0 1rem;
+}
+.inst-strip__item:first-child {
+	padding-left: 0;
+}
+.inst-strip__item:last-child {
+	padding-right: 0;
 }
 .inst-strip__item img {
 	height: 2.6rem;
 	width: auto;
-	max-width: 9rem;
+	max-width: 100%;
 	object-fit: contain;
 }
 .inst-strip__sep {
@@ -2870,8 +2880,12 @@ table {
 }
 @media (max-width: 760px) {
 	.inst-strip__inner {
-		gap: 0.75rem;
+		gap: 0;
 		padding: 0.5rem 0.75rem;
+	}
+	.inst-strip__item {
+		flex: 0 0 auto;
+		padding: 0 0.75rem;
 	}
 	.inst-strip__item img {
 		height: 2rem;
@@ -2902,4 +2916,27 @@ so the new strip sat underneath them. Stack all three solidly instead. */
 .site-home .site-nav a[aria-current="page"] {
 	background: var(--color-orange-100);
 	color: var(--color-orange-600);
+}
+
+/* Clean numbered lists for National / International committees. */
+.committee-list {
+	display: grid;
+	gap: 0.6rem;
+	margin: 0;
+	padding-left: 1.75rem;
+}
+.committee-list li {
+	padding: 0.55rem 0.75rem;
+	border: 1px solid var(--color-line);
+	border-radius: var(--radius-sm);
+	background: var(--color-paper);
+	overflow-wrap: anywhere;
+}
+.committee-list li strong {
+	color: var(--color-navy-900);
+}
+.committee-list li span {
+	display: block;
+	color: var(--color-muted);
+	font-size: 0.88rem;
 }

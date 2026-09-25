@@ -152,22 +152,6 @@ export default function Layout() {
 
       <header className="site-header">
         <div className="container site-header__inner">
-          <Link className="brand-lockup" to="/" aria-label={`${siteData.hostInstitute.name} home`}>
-            <img
-              className="brand-logo"
-              src={asset(siteData.hostInstitute.logo)}
-              alt={`${siteData.hostInstitute.name} logo`}
-              onError={(e) => {
-                e.currentTarget.style.display = 'none';
-              }}
-            />
-            <span className="brand-lockup__text brand-lockup__text--host">{siteData.hostInstitute.name}</span>
-          </Link>
-          <div className="site-header__partners" aria-label="In association with">
-            {siteData.associations.map((a) => (
-              <img key={a.shortName} src={asset(a.logo)} alt={`${a.name} logo`} title={a.name} />
-            ))}
-          </div>
           <button
             className="menu-toggle"
             type="button"

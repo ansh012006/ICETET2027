@@ -85,9 +85,11 @@ export default function About() {
               </p>
             ))}
             <div className="assoc-logos">
-              {siteData.associations.map((a) => (
-                <img key={a.shortName} src={asset(a.logo)} alt={`${a.name} logo`} title={a.name} loading="lazy" decoding="async" />
-              ))}
+              {siteData.associations
+                .filter((a) => a.shortName !== 'HBTU, Kanpur')
+                .map((a) => (
+                  <img key={a.shortName} src={asset(a.logo)} alt={`${a.name} logo`} title={a.name} loading="lazy" decoding="async" />
+                ))}
             </div>
           </div>
           <div

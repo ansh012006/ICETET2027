@@ -56,36 +56,50 @@ export default function Committee() {
               onChange={(e) => setQuery(e.target.value)}
             />
           </div>
-          {groups.map((group) => (
-            <section className="committee-group" key={group.group}>
-              <h2>{group.group}</h2>
-              <div className="committee-grid">
-                {group.visibleMembers.map((member) => (
-                  <article className="card committee-card searchable-member" key={member.name}>
-                    {member.photo ? (
-                      <img
-                        src={asset(member.photo)}
-                        srcSet={srcSetFor(member.photo)}
-                        sizes="128px"
-                        alt={member.name}
-                        loading="lazy"
-                        decoding="async"
-                      />
-                    ) : (
-                      <span className="initials-avatar" aria-hidden="true">
-                        {initials(member.name)}
-                      </span>
-                    )}
-                    <div className="committee-card__body">
-                      <span>{member.flag || ''}</span>
-                      <h3>{member.name}</h3>
-                      <p>{member.designation}</p>
-                    </div>
-                  </article>
-                ))}
-              </div>
-            </section>
-          ))}
+          {groups.map((group) =>
+            group.group === 'National Committee' || group.group === 'International Committee' ? (
+              <section className="committee-group" key={group.group}>
+                <h2>{group.group}</h2>
+                <ol className="committee-list">
+                  {group.visibleMembers.map((member) => (
+                    <li key={member.name} className="searchable-member">
+                      <strong>{member.flag ? `${member.flag} ` : ''}{member.name}</strong>
+                      <span>{member.designation}</span>
+                    </li>
+                  ))}
+                </ol>
+              </section>
+            ) : (
+              <section className="committee-group" key={group.group}>
+                <h2>{group.group}</h2>
+                <div className="committee-grid">
+                  {group.visibleMembers.map((member) => (
+                    <article className="card committee-card searchable-member" key={member.name}>
+                      {member.photo ? (
+                        <img
+                          src={asset(member.photo)}
+                          srcSet={srcSetFor(member.photo)}
+                          sizes="128px"
+                          alt={member.name}
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      ) : (
+                        <span className="initials-avatar" aria-hidden="true">
+                          {initials(member.name)}
+                        </span>
+                      )}
+                      <div className="committee-card__body">
+                        <span>{member.flag || ''}</span>
+                        <h3>{member.name}</h3>
+                        <p>{member.designation}</p>
+                      </div>
+                    </article>
+                  ))}
+                </div>
+              </section>
+            )
+          )}
         </div>
       </section>
     </>
