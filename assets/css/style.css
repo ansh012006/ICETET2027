@@ -2811,3 +2811,95 @@ table {
 	align-self: flex-start;
 	max-width: 100%;
 }
+
+/* Institutional logo strip: white, one row desktop, scroll on mobile. */
+.inst-strip {
+	background: #ffffff;
+	border-bottom: 1px solid var(--color-line);
+}
+.inst-strip__inner {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	overflow-x: auto;
+	padding: 0.55rem 1rem;
+	scrollbar-width: thin;
+}
+.inst-strip__item {
+	display: inline-flex;
+	align-items: center;
+	gap: 1rem;
+	flex: 0 0 auto;
+}
+.inst-strip__item img {
+	height: 2.6rem;
+	width: auto;
+	max-width: 9rem;
+	object-fit: contain;
+}
+.inst-strip__sep {
+	width: 1px;
+	align-self: stretch;
+	min-height: 2.2rem;
+	background: var(--color-line);
+}
+.site-header__partners {
+	gap: 0.6rem;
+}
+.site-header__partners img {
+	background: #fff;
+	padding: 0.15rem 0.35rem;
+	border: 1px solid rgba(7, 26, 43, 0.08);
+	border-radius: 0.4rem;
+}
+.assoc-logos {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 1rem;
+	margin-top: 1rem;
+}
+.assoc-logos img {
+	height: 3rem;
+	width: auto;
+	max-width: 10rem;
+	object-fit: contain;
+	background: #fff;
+	padding: 0.3rem 0.6rem;
+	border-radius: 0.5rem;
+}
+@media (max-width: 760px) {
+	.inst-strip__inner {
+		gap: 0.75rem;
+		padding: 0.5rem 0.75rem;
+	}
+	.inst-strip__item img {
+		height: 2rem;
+		max-width: 7rem;
+	}
+}
+
+/* Fix top overlap: home used absolute transparent topbar/header over the hero,
+so the new strip sat underneath them. Stack all three solidly instead. */
+.site-home .site-topbar {
+	position: static;
+	background: var(--color-navy-950);
+	border-bottom: 1px solid var(--color-line);
+}
+.site-home .site-header {
+	position: sticky;
+	top: 0;
+	background: rgba(255, 255, 255, 0.96);
+	border-bottom: 1px solid var(--color-line);
+	backdrop-filter: blur(14px);
+}
+.site-home .brand-lockup,
+.site-home .site-nav a,
+.site-home .menu-toggle {
+	color: var(--color-navy-950);
+}
+.site-home .site-nav a:hover,
+.site-home .site-nav a[aria-current="page"] {
+	background: var(--color-orange-100);
+	color: var(--color-orange-600);
+}

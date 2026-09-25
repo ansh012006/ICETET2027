@@ -5,7 +5,7 @@ import { asset } from '../utils.js';
 const SLIDES = [
   {
     image: 'assets/images/hero-bg-1.jpg',
-    kicker: 'International conference • In association with NIELIT',
+    kicker: 'International conference • In Association With HBTU & Jamia Millia Islamia',
     title: 'Build what comes next.',
     text: null, // falls back to conference tagline
   },
@@ -17,7 +17,7 @@ const SLIDES = [
   },
   {
     image: 'assets/images/partner-visual-2.jpg',
-    kicker: 'Connected by NIELIT',
+    kicker: 'In Association With HBTU & Jamia Millia Islamia',
     title: 'Think across boundaries.',
     text: 'Bring your questions, prototypes, and perspective to the conversation.',
   },
@@ -155,8 +155,8 @@ export default function Hero() {
           <strong>{siteData.hostInstitute.name}</strong>
         </div>
         <div className="hero__partner-label">
-          <span>In association with</span>
-          <strong>{siteData.partner.name}</strong>
+          <span>In Association With</span>
+          <strong>HBTU, Kanpur & Jamia Millia Islamia, New Delhi</strong>
         </div>
         <div className="hero__dots" aria-label="Hero slides">
           {SLIDES.map((slide, index) => (

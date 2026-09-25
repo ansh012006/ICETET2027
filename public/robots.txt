@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://www.icetet2027.in/sitemap.xml

@@ -9,6 +9,39 @@ export default function About() {
         title="About the conference"
         intro="Context, purpose, and the communities ICETET 2027 is built to serve."
       />
+      <section className="section section--image" aria-labelledby="departments-title">
+        <div className="container">
+          <div className="section__intro section__intro--light">
+            <p className="eyebrow">Joint organizers</p>
+            <h2 className="section-title" id="departments-title">
+              Organizing <span>Departments</span>
+            </h2>
+            <p>{siteData.departmentsIntro}</p>
+          </div>
+          <div className="card-grid track-grid">
+            {siteData.departments.map((dept) => (
+              <article className="card track-card dept-card" key={dept.code}>
+                <div className="track-card__top">
+                  <span className="dept-code">{dept.code}</span>
+                  <span className="track-icon" dangerouslySetInnerHTML={{ __html: dept.icon }} />
+                </div>
+                <h3>{dept.name}</h3>
+                <p>{dept.description}</p>
+                <a
+                  className="button button--glass"
+                  href={dept.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Explore ${dept.name} official page (opens in a new tab)`}
+                >
+                  Explore Department <span aria-hidden="true">↗</span>
+                </a>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <div className="section page-content">
         <div className="container">
           <div className="page-content__intro">
@@ -42,17 +75,26 @@ export default function About() {
       <section className="section section--navy">
         <div className="container split-layout split-layout--reverse">
           <div className="split-layout__copy">
-            <p className="eyebrow">In association with {siteData.partner.name}</p>
+            <p className="eyebrow">{siteData.associationNote}</p>
             <h2 className="section-title">
-              A national <span>technology</span> connection
+              Academic <span>associations</span>
             </h2>
-            <p>{siteData.partner.about}</p>
+            {siteData.associations.map((a) => (
+              <p key={a.shortName}>
+                <strong>{a.name}:</strong> {a.about}
+              </p>
+            ))}
+            <div className="assoc-logos">
+              {siteData.associations.map((a) => (
+                <img key={a.shortName} src={asset(a.logo)} alt={`${a.name} logo`} title={a.name} loading="lazy" decoding="async" />
+              ))}
+            </div>
           </div>
           <div
             className="split-layout__image"
             role="img"
-            aria-label="Partner organization visual"
-            style={{ backgroundImage: `url('${asset(siteData.partner.logo)}')` }}
+            aria-label="Associated institutions visual"
+            style={{ backgroundImage: `url('${asset(siteData.associations[0].logo)}')` }}
           />
         </div>
       </section>
@@ -114,39 +156,6 @@ export default function About() {
                 <li>Run by Shri Ram Murti Smarak Trust</li>
               </ul>
             </aside>
-          </div>
-        </div>
-      </section>
-
-      <section className="section section--image" aria-labelledby="departments-title">
-        <div className="container">
-          <div className="section__intro section__intro--light">
-            <p className="eyebrow">Joint organizers</p>
-            <h2 className="section-title" id="departments-title">
-              Organizing <span>Departments</span>
-            </h2>
-            <p>{siteData.departmentsIntro}</p>
-          </div>
-          <div className="card-grid track-grid">
-            {siteData.departments.map((dept) => (
-              <article className="card track-card dept-card" key={dept.code}>
-                <div className="track-card__top">
-                  <span className="dept-code">{dept.code}</span>
-                  <span className="track-icon" dangerouslySetInnerHTML={{ __html: dept.icon }} />
-                </div>
-                <h3>{dept.name}</h3>
-                <p>{dept.description}</p>
-                <a
-                  className="button button--glass"
-                  href={dept.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`Explore ${dept.name} official page (opens in a new tab)`}
-                >
-                  Explore Department <span aria-hidden="true">↗</span>
-                </a>
-              </article>
-            ))}
           </div>
         </div>
       </section>

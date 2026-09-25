@@ -139,6 +139,17 @@ export default function Layout() {
         </div>
       </div>
 
+      <div className="inst-strip" aria-label="Institutional logos">
+        <div className="container inst-strip__inner">
+          {siteData.institutionalLogos.map((logo, i) => (
+            <span className="inst-strip__item" key={logo.name}>
+              <img src={asset(logo.logo)} alt={`${logo.name} logo`} loading="lazy" decoding="async" />
+              {i < siteData.institutionalLogos.length - 1 && <span className="inst-strip__sep" aria-hidden="true" />}
+            </span>
+          ))}
+        </div>
+      </div>
+
       <header className="site-header">
         <div className="container site-header__inner">
           <Link className="brand-lockup" to="/" aria-label={`${siteData.hostInstitute.name} home`}>
@@ -152,8 +163,10 @@ export default function Layout() {
             />
             <span className="brand-lockup__text brand-lockup__text--host">{siteData.hostInstitute.name}</span>
           </Link>
-          <div className="site-header__partners" aria-label="Conference partners">
-            <img src={asset(siteData.partner.logo)} alt={`${siteData.partner.name} logo`} />
+          <div className="site-header__partners" aria-label="In association with">
+            {siteData.associations.map((a) => (
+              <img key={a.shortName} src={asset(a.logo)} alt={`${a.name} logo`} title={a.name} />
+            ))}
           </div>
           <button
             className="menu-toggle"
@@ -230,7 +243,7 @@ export default function Layout() {
                 <br />
                 {siteData.conference.organizingDepartment}
               </p>
-              <p>In association with {siteData.partner.fullName}.</p>
+              <p>{siteData.associationNote}</p>
             </div>
             <div>
               <h2 className="site-footer__heading">Contact</h2>

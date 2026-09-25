@@ -4,5 +4,5 @@
   "outputDirectory": "dist",
   "framework": "vite",
   "cleanUrls": true,
-  "rewrites": [{ "source": "/((?!assets/).*)", "destination": "/index.html" }]
+  "rewrites": [{ "source": "/((?!assets/|robots\\.txt|sitemap\\.xml|google.*\\.html|.*\\.txt|.*\\.xml).*)", "destination": "/index.html" }]
 }

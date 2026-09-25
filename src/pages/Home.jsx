@@ -185,14 +185,19 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section section--navy" id="nielit" aria-labelledby="nielit-title">
+      <section className="section section--navy" id="association" aria-labelledby="association-title">
         <div className="container split-layout split-layout--reverse">
           <div className="split-layout__copy">
-            <p className="eyebrow">02 / National technology partner</p>
-            <h2 className="section-title" id="nielit-title">
+            <p className="eyebrow">02 / In Association With</p>
+            <h2 className="section-title" id="association-title">
               Built for the <em>connected</em> future.
             </h2>
-            <p>{siteData.partner.about}</p>
+            <p>{siteData.associationNote} ICETET-2027 brings together academic collaboration and technical participation from both institutions.</p>
+            <div className="assoc-logos">
+              {siteData.associations.map((a) => (
+                <img key={a.shortName} src={asset(a.logo)} alt={`${a.name} logo`} title={a.name} loading="lazy" decoding="async" />
+              ))}
+            </div>
             <Link className="text-link text-link--light" to="/about">
               Discover the partnership <span aria-hidden="true">↗</span>
             </Link>
@@ -200,13 +205,13 @@ export default function Home() {
           <div
             className="split-layout__image split-layout__image--partner"
             role="img"
-            aria-label="Partner organization visual"
-            style={{ backgroundImage: `url('${asset(siteData.partner.logo)}')` }}
+            aria-label="Associated institutions visual"
+            style={{ backgroundImage: `url('${asset(siteData.associations[0].logo)}')` }}
           >
             <span className="image-stamp">
-              NIELIT
+              HBTU &amp; JAMIA
               <br />
-              PARTNER
+              ASSOCIATES
             </span>
           </div>
         </div>
